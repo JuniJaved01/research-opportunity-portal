@@ -1,0 +1,256 @@
+/* Basic page styling */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f3f5f9;
+    color: #222;
+    line-height: 1.6;
+}
+
+/* Page header */
+.header {
+    background: #173b65;
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+}
+
+.header h1 {
+    margin: 0 0 8px;
+}
+
+.header p {
+    margin: 0;
+}
+
+/* Main page layout */
+.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.form-section,
+.opportunities-section {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+h2 {
+    margin-top: 0;
+    color: #173b65;
+}
+
+/* Form fields */
+form label {
+    display: block;
+    margin-top: 14px;
+    font-weight: bold;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 11px;
+    margin-top: 5px;
+    border: 1px solid #cbd1da;
+    border-radius: 5px;
+    font: inherit;
+}
+
+textarea {
+    min-height: 100px;
+    resize: vertical;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+    outline: 2px solid #8bb9ed;
+    border-color: #2868a9;
+}
+
+/* Buttons */
+.form-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    border: none;
+    border-radius: 5px;
+    padding: 11px 16px;
+    background: #245d91;
+    color: white;
+    font: inherit;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #173b65;
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+#cancel-button {
+    background: #687381;
+}
+
+/* Opportunity cards created by JavaScript */
+.opportunity-card {
+    border: 1px solid #dce1e8;
+    border-left: 5px solid #245d91;
+    border-radius: 7px;
+    padding: 18px;
+    margin: 15px 0;
+    overflow-wrap: anywhere;
+}
+
+.opportunity-card h3 {
+    margin-top: 0;
+    color: #173b65;
+}
+
+.opportunity-card p {
+    margin: 7px 0;
+}
+
+.status {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    background: #d9f3e3;
+    color: #176b39;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.status.closed {
+    background: #f9dddd;
+    color: #942b2b;
+}
+
+.card-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.card-buttons .delete-button {
+    background: #b52d36;
+}
+
+.card-buttons .delete-button:hover {
+    background: #8d2028;
+}
+
+#message {
+    font-weight: bold;
+}
+
+#message.error {
+    color: #b52d36;
+}
+
+#message.success {
+    color: #176b39;
+}
+
+[hidden] {
+    display: none !important;
+}
+
+/* Adjust layout for smaller screens */
+@media (max-width: 600px) {
+    .container {
+        margin: 15px auto;
+        padding: 0 12px;
+    }
+
+    .form-section,
+    .opportunities-section {
+        padding: 16px;
+    }
+
+    .header h1 {
+        font-size: 1.6rem;
+    }
+
+    .form-buttons button {
+        flex: 1;
+    }
+}
+
+/* ---------- Additions for details section, close button and messages ---------- */
+
+/* The details section looks like the other white sections */
+.details-section {
+    background: white;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* Spacing and wrapping for the detail lines */
+.details-section p {
+    margin: 8px 0;
+    overflow-wrap: anywhere;
+}
+
+/* Title inside the details section */
+.details-section h3 {
+    margin-top: 0;
+    color: #173b65;
+}
+
+/* Orange Close Opportunity button */
+.card-buttons .close-opportunity-button {
+    background: #b9770e;
+}
+
+.card-buttons .close-opportunity-button:hover {
+    background: #8f5c0b;
+}
+
+/* Hide the message box when it has no text */
+#message:empty {
+    display: none;
+}
+
+/* Show messages as a banner fixed at the top of the screen so they are always visible */
+#message {
+    position: fixed;
+    top: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    max-width: 90%;
+    margin: 0;
+    padding: 12px 22px;
+    border-radius: 6px;
+    background: white;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+}
+
+/* Colored left edge for success and error banners */
+#message.success {
+    border-left: 6px solid #176b39;
+}
+
+#message.error {
+    border-left: 6px solid #b52d36;
+}

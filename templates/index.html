@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<!-- Tell the browser this is an HTML5 page -->
+<html lang="en">
+<head>
+    <!-- Use a character set that supports all common characters -->
+    <meta charset="UTF-8">
+    <!-- Make the page fit properly on phone screens -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The title shown on the browser tab -->
+    <title>Research Opportunity Portal</title>
+
+    <!-- Load our stylesheet from the static folder -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <!-- Page header with the title and a short description -->
+    <header class="header">
+        <h1>University Research Opportunity Portal</h1>
+        <p>Discover research opportunities and explore academic projects.</p>
+    </header>
+
+    <!-- Success and error messages appear here (JavaScript fills it in) -->
+    <p id="message" role="status"></p>
+
+    <!-- Main content area -->
+    <main class="container">
+
+        <!-- Section 1: the form used to add or edit an opportunity -->
+        <section class="form-section">
+            <h2 id="form-heading">Add a Research Opportunity</h2>
+
+            <!-- novalidate lets our own JavaScript validation show the error messages -->
+            <form id="opportunity-form" novalidate>
+                <!-- Hidden field that stores the ID when we are editing -->
+                <input type="hidden" id="opportunity-id">
+
+                <!-- Research title field -->
+                <label for="research_title">Research Title</label>
+                <input type="text" id="research_title" maxlength="200" required>
+
+                <!-- Research description field -->
+                <label for="research_description">Research Description</label>
+                <textarea id="research_description" required></textarea>
+
+                <!-- Research area field -->
+                <label for="research_area">Research Area</label>
+                <input type="text" id="research_area" maxlength="150" required>
+
+                <!-- Faculty member's name field -->
+                <label for="faculty_name">Faculty Name</label>
+                <input type="text" id="faculty_name" maxlength="150" required>
+
+                <!-- Department field -->
+                <label for="department">Department</label>
+                <input type="text" id="department" maxlength="100" required>
+
+                <!-- Required skills field -->
+                <label for="required_skills">Required Skills</label>
+                <input type="text" id="required_skills" maxlength="300"
+                       placeholder="Python, SQL, Machine Learning" required>
+
+                <!-- Number of available positions (whole numbers only) -->
+                <label for="available_positions">Available Positions</label>
+                <input type="number" id="available_positions" min="0" step="1" required>
+
+                <!-- Application deadline (date picker) -->
+                <label for="application_deadline">Application Deadline</label>
+                <input type="date" id="application_deadline" required>
+
+                <!-- Status dropdown: Open or Closed -->
+                <label for="status">Status</label>
+                <select id="status">
+                    <option value="Open">Open</option>
+                    <option value="Closed">Closed</option>
+                </select>
+
+                <!-- Form buttons: the Cancel button is hidden until we are editing -->
+                <div class="form-buttons">
+                    <button type="submit" id="submit-button">Add Opportunity</button>
+                    <button type="button" id="cancel-button" hidden>Cancel Edit</button>
+                </div>
+            </form>
+        </section>
+
+        <!-- Section 2: complete details of the selected opportunity (hidden until View Details is clicked) -->
+        <section class="details-section" id="details-section" hidden>
+            <h2>Opportunity Details</h2>
+
+            <!-- JavaScript fills the full details in here -->
+            <div id="details-content"></div>
+
+            <!-- Button to hide the details again -->
+            <div class="form-buttons">
+                <button type="button" id="hide-details-button">Hide Details</button>
+            </div>
+        </section>
+
+        <!-- Section 3: the list of all opportunities -->
+        <section class="opportunities-section">
+            <h2>Available Research Opportunities</h2>
+
+            <!-- JavaScript loads opportunities from the Flask API into this box -->
+            <div id="opportunities-list">
+                <p>Loading opportunities...</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Load our JavaScript after the page content -->
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
