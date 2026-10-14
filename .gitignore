@@ -1,0 +1,6 @@
+# Python virtual environment (never upload this)
+venv/
+# Python cache files
+__pycache__/
+# Private database settings (never upload this)
+.env
